@@ -7,9 +7,10 @@ for (let i = 0; i < dropBtnForms.length; i++) {
     const dropListItems = dropList.querySelectorAll('.dropdown-btn-form__list-item');
     const inputElement = dropBtnForm.querySelector(".dropdown-btn-form__value");
 
-    dropBtn.addEventListener("click", function() {
+    dropBtn.addEventListener("click", function(event) {
         this.classList.toggle("active");
         dropList.classList.toggle("active");
+        event.preventDefault();
     });
 
     let k = 0;
@@ -20,12 +21,14 @@ for (let i = 0; i < dropBtnForms.length; i++) {
                 if(k > dropListItems.length) k = 1;
                 setValue(dropListItems[k-1]);
                 checkSelectItem();
+                event.preventDefault();
             }
             else if(event.key === 'ArrowUp'){
                 if(k <= 1) k = dropListItems.length;
                 else k--;
                 setValue(dropListItems[k-1]);
                 checkSelectItem();
+                event.preventDefault();
             }
         }
     });
